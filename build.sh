@@ -32,18 +32,8 @@ if ! type -p ctgen >/dev/null; then
 fi
 
 declare -A names
-names["Bibata-Modern-Amber"]=$(with_version "Yellowish and rounded edge Bibata")
-names["Bibata-Modern-Amber-Right"]=$(with_version "Yellowish and rounded edge right-hand Bibata")
-names["Bibata-Modern-Classic"]=$(with_version "Black and rounded edge Bibata")
-names["Bibata-Modern-Classic-Right"]=$(with_version "Black and rounded edge right-hand Bibata")
-names["Bibata-Modern-Ice"]=$(with_version "White and rounded edge Bibata")
-names["Bibata-Modern-Ice-Right"]=$(with_version "White and rounded edge right-hand Bibata")
-names["Bibata-Original-Amber"]=$(with_version "Yellowish and sharp edge Bibata")
-names["Bibata-Original-Amber-Right"]=$(with_version "Yellowish and sharp edge right-hand Bibata")
-names["Bibata-Original-Classic"]=$(with_version "Black and sharp edge Bibata")
-names["Bibata-Original-Classic-Right"]=$(with_version "Black and sharp edge right-hand Bibata")
-names["Bibata-Original-Ice"]=$(with_version "White and sharp edge Bibata")
-names["Bibata-Original-Ice-Right"]=$(with_version "White and sharp edge right-hand Bibata")
+names["Bibata-Modern-Everforest"]=$(with_version "Everforest and rounded edge Bibata")
+names["Bibata-Modern-Everforest-Light"]=$(with_version "Light Everforest and rounded edge Bibata")
 
 # Cleanup old builds
 rm -rf themes bin
@@ -70,11 +60,16 @@ for key in "${!names[@]}"; do
   wait $PID
 done
 
-# Compressing Binaries
+# Generate Hyprcursors and compress binaries
 mkdir -p bin
 cd themes || exit
 
 for key in "${!names[@]}"; do
+  mkdir tmp
+  hyprcursor-util -x "$key" -o tmp
+  hyprcursor-util -c tmp/extracted* -o tmp
+  mv 'tmp/theme_Extracted Theme'/* "$key"
+  rm -rf tmp
   tar -cJvf "../bin/${key}.tar.xz" "${key}" &
   PID=$!
   wait $PID
@@ -98,3 +93,31 @@ cd ..
 # Copying License File for 'bitmaps'
 cp LICENSE bitmaps/
 zip -rv bin/bitmaps.zip bitmaps
+
+# Install Linux Cursors
+read -p "Install Linux cursors? (Y/n) " install
+install=$(echo "$install" | tr '[:upper:]' '[:lower:]')
+
+if [[ "$install" == 'y' || -z "$install" ]]; then
+  read -p "Backup existing cursors? This will overwrite any existing backups. (y/N)" backup
+  backup=$(echo "$backup" | tr '[:upper:]' '[:lower:]')
+  echo "Installing..."
+  cd themes
+
+  if [[ "$backup" == 'y' ]]; then
+    rm -rf "$HOME"/.icons/bak
+    mkdir "$HOME"/.icons/bak
+  fi
+
+  for key in "${!names[@]}"; do
+    if [[ -e "$HOME"/.icons/"$key" ]]; then
+      if [[ "$backup" == 'y' ]]; then
+        mv "$HOME"/.icons/"$key" "$HOME"/.icons/bak || exit 1
+      else
+        rm -rf "$HOME"/.icons/"$key"
+      fi
+    fi
+    cp -r "$key" "$HOME"/.icons
+  done
+  echo 'Done!'
+fi
