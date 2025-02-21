@@ -1,115 +1,62 @@
 {
-  "Bibata-Modern-Amber": {
+  "Bibata-Modern-Everforest": {
     "dir": "svg/modern",
-    "out": "bitmaps/Bibata-Modern-Amber",
+    "out": "bitmaps/Bibata-Modern-Everforest",
     "colors": [
-      { "match": "#00FF00", "replace": "#FF8300" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#001524" }
-    ]
-  },
-  "Bibata-Modern-Amber-Right": {
-    "dir": "svg/modern-right",
-    "out": "bitmaps/Bibata-Modern-Amber-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FF8300" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#001524" }
-    ]
-  },
+      { "match": "#00FF00", "replace": "#272E33" },
+      { "match": "#0000FF", "replace": "#D3C6AA" },
+      { "match": "#FF0000", "replace": "#272E33" },
 
-  "Bibata-Modern-Classic": {
+      { "match": "#32A0DA", "replace": "#7FBBB3" },
+      { "match": "#F05024", "replace": "#E69875" },
+      { "match": "#7EBA41", "replace": "#A7C080" },
+      { "match": "#FCB813", "replace": "#DBBC7F" },
+
+      { "match": "#96C865", "replace": "#272E33" },
+      { "match": "#FDBE2A", "replace": "#272E33" },
+      { "match": "#4FADDF", "replace": "#272E33" },
+      { "match": "#F1613A", "replace": "#272E33" },
+
+      { "match": "white",   "replace": "#FFFBEF" },
+      { "match": "#FFFFFF", "replace": "#FFFBEF" },
+      { "match": "#FE0000", "replace": "#E67E80" },
+      { "match": "#5F3BE4", "replace": "#D699B6" },
+      { "match": "#06B231", "replace": "#A7C080" },
+      { "match": "#F27400", "replace": "#E69875" },
+      { "match": "#606060", "replace": "#7A8478" },
+      { "match": "#2C2C2C", "replace": "#9DA9A0" },
+      { "match": "#0A6857", "replace": "#83C092" },
+      { "match": "#179DD8", "replace": "#7FBBB3" }
+    ]
+  },
+  "Bibata-Modern-Everforest-Light": {
     "dir": "svg/modern",
-    "out": "bitmaps/Bibata-Modern-Classic",
+    "out": "bitmaps/Bibata-Modern-Everforest-Light",
     "colors": [
-      { "match": "#00FF00", "replace": "#000000" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#000000" }
-    ]
-  },
-  "Bibata-Modern-Classic-Right": {
-    "dir": "svg/modern-right",
-    "out": "bitmaps/Bibata-Modern-Classic-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#000000" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#000000" }
-    ]
-  },
+      { "match": "#00FF00", "replace": "#FFFBEF" },
+      { "match": "#0000FF", "replace": "#5C6A72" },
+      { "match": "#FF0000", "replace": "#272E33" },
 
-  "Bibata-Modern-Ice": {
-    "dir": "svg/modern",
-    "out": "bitmaps/Bibata-Modern-Ice",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FFFFFF" },
-      { "match": "#0000FF", "replace": "#000000" },
-      { "match": "#FF0000", "replace": "#FFFFFF" }
-    ]
-  },
-  "Bibata-Modern-Ice-Right": {
-    "dir": "svg/modern-right",
-    "out": "bitmaps/Bibata-Modern-Ice-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FFFFFF" },
-      { "match": "#0000FF", "replace": "#000000" },
-      { "match": "#FF0000", "replace": "#FFFFFF" }
-    ]
-  },
+      { "match": "#32A0DA", "replace": "#3A94C5" },
+      { "match": "#F05024", "replace": "#F57D26" },
+      { "match": "#7EBA41", "replace": "#8DA101" },
+      { "match": "#FCB813", "replace": "#DFA000" },
 
-  "Bibata-Original-Amber": {
-    "dir": "svg/original",
-    "out": "bitmaps/Bibata-Original-Amber",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FF8300" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#001524" }
-    ]
-  },
-  "Bibata-Original-Amber-Right": {
-    "dir": "svg/original-right",
-    "out": "bitmaps/Bibata-Original-Amber-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FF8300" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#001524" }
-    ]
-  },
+      { "match": "#96C865", "replace": "#FFFBEF" },
+      { "match": "#FDBE2A", "replace": "#FFFBEF" },
+      { "match": "#4FADDF", "replace": "#FFFBEF" },
+      { "match": "#F1613A", "replace": "#FFFBEF" },
 
-  "Bibata-Original-Classic": {
-    "dir": "svg/original",
-    "out": "bitmaps/Bibata-Original-Classic",
-    "colors": [
-      { "match": "#00FF00", "replace": "#000000" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#000000" }
-    ]
-  },
-  "Bibata-Original-Classic-Right": {
-    "dir": "svg/original-right",
-    "out": "bitmaps/Bibata-Original-Classic-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#000000" },
-      { "match": "#0000FF", "replace": "#FFFFFF" },
-      { "match": "#FF0000", "replace": "#000000" }
-    ]
-  },
-
-  "Bibata-Original-Ice": {
-    "dir": "svg/original",
-    "out": "bitmaps/Bibata-Original-Ice",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FFFFFF" },
-      { "match": "#0000FF", "replace": "#000000" },
-      { "match": "#FF0000", "replace": "#FFFFFF" }
-    ]
-  },
-  "Bibata-Original-Ice-Right": {
-    "dir": "svg/original-right",
-    "out": "bitmaps/Bibata-Original-Ice-Right",
-    "colors": [
-      { "match": "#00FF00", "replace": "#FFFFFF" },
-      { "match": "#0000FF", "replace": "#000000" },
-      { "match": "#FF0000", "replace": "#FFFFFF" }
+      { "match": "white",   "replace": "#FFFBEF" },
+      { "match": "#FFFFFF", "replace": "#FFFBEF" },
+      { "match": "#FE0000", "replace": "#F85552" },
+      { "match": "#5F3BE4", "replace": "#DF69BA" },
+      { "match": "#06B231", "replace": "#8DA101" },
+      { "match": "#F27400", "replace": "#F57D26" },
+      { "match": "#606060", "replace": "#A6B0A0" },
+      { "match": "#2C2C2C", "replace": "#829181" },
+      { "match": "#0A6857", "replace": "#35A77C" },
+      { "match": "#179DD8", "replace": "#3A94C5" }
     ]
   }
 }
