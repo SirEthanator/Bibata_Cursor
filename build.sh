@@ -34,6 +34,10 @@ fi
 declare -A names
 names["Bibata-Modern-Everforest"]=$(with_version "Everforest and rounded edge Bibata")
 names["Bibata-Modern-Everforest-Light"]=$(with_version "Light Everforest and rounded edge Bibata")
+names["Bibata-Modern-CatMocha"]=$(with_version "Catppuccin Mocha and rounded edge Bibata")
+names["Bibata-Modern-CatLatte"]=$(with_version "Catppuccin Latte and rounded edge Bibata")
+names["Bibata-Modern-Rose-Pine"]=$(with_version "Rose Pine and rounded edge Bibata")
+names["Bibata-Modern-Rose-Pine-Dawn"]=$(with_version "Rose Pine Dawn and rounded edge Bibata")
 
 # Cleanup old builds
 rm -rf themes bin
