@@ -1,0 +1,62 @@
+{
+  "Bibata-Modern-Material": {
+    "dir": "svg/modern",
+    "out": "bitmaps/Bibata-Modern-Material",
+    "colors": [
+      { "match": "#00FF00", "replace": "#111318" },
+      { "match": "#0000FF", "replace": "#e1e2e9" },
+      { "match": "#FF0000", "replace": "#111318" },
+
+      { "match": "#32A0DA", "replace": "#b3c5ff" },
+      { "match": "#F05024", "replace": "#ffb59c" },
+      { "match": "#7EBA41", "replace": "#95d5a7" },
+      { "match": "#FCB813", "replace": "#b8cf84" },
+
+      { "match": "#96C865", "replace": "#111318" },
+      { "match": "#FDBE2A", "replace": "#111318" },
+      { "match": "#4FADDF", "replace": "#111318" },
+      { "match": "#F1613A", "replace": "#111318" },
+
+      { "match": "white",   "replace": "#111318" },
+      { "match": "#FFFFFF", "replace": "#111318" },
+      { "match": "#FE0000", "replace": "#ffb2b9" },
+      { "match": "#5F3BE4", "replace": "#e4b7f3" },
+      { "match": "#06B231", "replace": "#95d5a7" },
+      { "match": "#F27400", "replace": "#ffb59c" },
+      { "match": "#606060", "replace": "#b8cf84" },
+      { "match": "#2C2C2C", "replace": "#b8cf84" },
+      { "match": "#0A6857", "replace": "#82d3e2" },
+      { "match": "#179DD8", "replace": "#b3c5ff" }
+    ]
+  },
+  "Bibata-Modern-Material-Light": {
+    "dir": "svg/modern",
+    "out": "bitmaps/Bibata-Modern-Material-Light",
+    "colors": [
+      { "match": "#00FF00", "replace": "#f9f9ff" },
+      { "match": "#0000FF", "replace": "#191c20" },
+      { "match": "#FF0000", "replace": "#f9f9ff" },
+
+      { "match": "#32A0DA", "replace": "#495d92" },
+      { "match": "#F05024", "replace": "#8f4c34" },
+      { "match": "#7EBA41", "replace": "#2d6a45" },
+      { "match": "#FCB813", "replace": "#526526" },
+
+      { "match": "#96C865", "replace": "#f9f9ff" },
+      { "match": "#FDBE2A", "replace": "#f9f9ff" },
+      { "match": "#4FADDF", "replace": "#f9f9ff" },
+      { "match": "#F1613A", "replace": "#f9f9ff" },
+
+      { "match": "white",   "replace": "#f9f9ff" },
+      { "match": "#FFFFFF", "replace": "#f9f9ff" },
+      { "match": "#FE0000", "replace": "#8f4952" },
+      { "match": "#5F3BE4", "replace": "#765085" },
+      { "match": "#06B231", "replace": "#2d6a45" },
+      { "match": "#F27400", "replace": "#8f4c34" },
+      { "match": "#606060", "replace": "#526526" },
+      { "match": "#2C2C2C", "replace": "#526526" },
+      { "match": "#0A6857", "replace": "#006876" },
+      { "match": "#179DD8", "replace": "#495d92" }
+    ]
+  }
+}

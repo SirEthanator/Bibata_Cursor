@@ -2,6 +2,7 @@
 themes/
 bin/
 bitmaps/
+render.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

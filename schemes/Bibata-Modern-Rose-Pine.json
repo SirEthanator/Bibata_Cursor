@@ -1,0 +1,32 @@
+{
+  "Bibata-Modern-Rose-Pine": {
+    "dir": "svg/modern",
+    "out": "bitmaps/Bibata-Modern-Rose-Pine",
+    "colors": [
+      { "match": "#00FF00", "replace": "#1F1D2E" },
+      { "match": "#0000FF", "replace": "#E0DEF4" },
+      { "match": "#FF0000", "replace": "#1F1D2E" },
+
+      { "match": "#32A0DA", "replace": "#9CCFD8" },
+      { "match": "#F05024", "replace": "#EB6F92" },
+      { "match": "#7EBA41", "replace": "#31748F" },
+      { "match": "#FCB813", "replace": "#F6C177" },
+
+      { "match": "#96C865", "replace": "#1F1D2E" },
+      { "match": "#FDBE2A", "replace": "#1F1D2E" },
+      { "match": "#4FADDF", "replace": "#1F1D2E" },
+      { "match": "#F1613A", "replace": "#1F1D2E" },
+
+      { "match": "white",   "replace": "#1F1D2E" },
+      { "match": "#FFFFFF", "replace": "#1F1D2E" },
+      { "match": "#FE0000", "replace": "#EB6F92" },
+      { "match": "#5F3BE4", "replace": "#C4A7E7" },
+      { "match": "#06B231", "replace": "#A6E3A1" },
+      { "match": "#F27400", "replace": "#EBBCBA" },
+      { "match": "#606060", "replace": "#F6C177" },
+      { "match": "#2C2C2C", "replace": "#F6C177" },
+      { "match": "#0A6857", "replace": "#31748F" },
+      { "match": "#179DD8", "replace": "#9CCFD8" }
+    ]
+  }
+}

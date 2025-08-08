@@ -38,6 +38,8 @@ names["Bibata-Modern-CatMocha"]=$(with_version "Catppuccin Mocha and rounded edg
 names["Bibata-Modern-CatLatte"]=$(with_version "Catppuccin Latte and rounded edge Bibata")
 names["Bibata-Modern-Rose-Pine"]=$(with_version "Rose Pine and rounded edge Bibata")
 names["Bibata-Modern-Rose-Pine-Dawn"]=$(with_version "Rose Pine Dawn and rounded edge Bibata")
+names["Bibata-Modern-Material"]=$(with_version "Material Dark and rounded edge Bibata")
+names["Bibata-Modern-Material-Light"]=$(with_version "Material Light and rounded edge Bibata")
 
 # Cleanup old builds
 rm -rf themes bin
@@ -103,10 +105,10 @@ read -p "Install Linux cursors? (Y/n) " install
 install=$(echo "$install" | tr '[:upper:]' '[:lower:]')
 
 if [[ "$install" == 'y' || -z "$install" ]]; then
-  read -p "Backup existing cursors? This will overwrite any existing backups. (y/N)" backup
+  read -p "Backup existing cursors? This will overwrite any existing backups. (y/N) " backup
   backup=$(echo "$backup" | tr '[:upper:]' '[:lower:]')
   echo "Installing..."
-  cd themes
+  cd themes || exit 1
 
   if [[ "$backup" == 'y' ]]; then
     rm -rf "$HOME"/.icons/bak

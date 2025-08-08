@@ -1,0 +1,33 @@
+{
+  "Bibata-Modern-CatLatte": {
+    "dir": "svg/modern",
+    "out": "bitmaps/Bibata-Modern-CatLatte",
+    "colors": [
+      { "match": "#00FF00", "replace": "#EFF1F5" },
+      { "match": "#0000FF", "replace": "#4C4F69" },
+      { "match": "#FF0000", "replace": "#EFF1F5" },
+
+      { "match": "#32A0DA", "replace": "#1E66F5" },
+      { "match": "#F05024", "replace": "#FE640B" },
+      { "match": "#7EBA41", "replace": "#40A02B" },
+      { "match": "#FCB813", "replace": "#DF8E1D" },
+
+      { "match": "#96C865", "replace": "#EFF1F5" },
+      { "match": "#FDBE2A", "replace": "#EFF1F5" },
+      { "match": "#4FADDF", "replace": "#EFF1F5" },
+      { "match": "#F1613A", "replace": "#EFF1F5" },
+
+      { "match": "white",   "replace": "#EFF1F5" },
+      { "match": "#FFFFFF", "replace": "#EFF1F5" },
+      { "match": "#FE0000", "replace": "#D20F39" },
+      { "match": "#5F3BE4", "replace": "#8839EF" },
+      { "match": "#06B231", "replace": "#40A02B" },
+      { "match": "#F27400", "replace": "#FE640B" },
+      { "match": "#606060", "replace": "#DF8E1D" },
+      { "match": "#2C2C2C", "replace": "#DF8E1D" },
+      { "match": "#0A6857", "replace": "#209FB5" },
+      { "match": "#179DD8", "replace": "#1E66F5" }
+    ]
+  }
+}
+

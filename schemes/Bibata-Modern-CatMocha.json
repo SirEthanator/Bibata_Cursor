@@ -1,0 +1,33 @@
+{
+  "Bibata-Modern-CatMocha": {
+    "dir": "svg/modern",
+    "out": "bitmaps/Bibata-Modern-CatMocha",
+    "colors": [
+      { "match": "#00FF00", "replace": "#1E1E2E" },
+      { "match": "#0000FF", "replace": "#CDD6F4" },
+      { "match": "#FF0000", "replace": "#1E1E2E" },
+
+      { "match": "#32A0DA", "replace": "#89B4FA" },
+      { "match": "#F05024", "replace": "#FAB387" },
+      { "match": "#7EBA41", "replace": "#A6E3A1" },
+      { "match": "#FCB813", "replace": "#F9E2AF" },
+
+      { "match": "#96C865", "replace": "#1E1E2E" },
+      { "match": "#FDBE2A", "replace": "#1E1E2E" },
+      { "match": "#4FADDF", "replace": "#1E1E2E" },
+      { "match": "#F1613A", "replace": "#1E1E2E" },
+
+      { "match": "white",   "replace": "#1E1E2E" },
+      { "match": "#FFFFFF", "replace": "#1E1E2E" },
+      { "match": "#FE0000", "replace": "#F38BA8" },
+      { "match": "#5F3BE4", "replace": "#CBA6F7" },
+      { "match": "#06B231", "replace": "#A6E3A1" },
+      { "match": "#F27400", "replace": "#FAB387" },
+      { "match": "#606060", "replace": "#F9E2AF" },
+      { "match": "#2C2C2C", "replace": "#F9E2AF" },
+      { "match": "#0A6857", "replace": "#74C7EC" },
+      { "match": "#179DD8", "replace": "#89B4FA" }
+    ]
+  }
+}
+
