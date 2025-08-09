@@ -9,6 +9,9 @@ else
   json="${ROOT}/render.json"
 fi
 
-npx cbmp "$json"
-"$ROOT"/build.sh "$@"
+(
+  cd "$ROOT" || exit 1
+  npx cbmp "$json"
+  ./build.sh "$@"
+)
 

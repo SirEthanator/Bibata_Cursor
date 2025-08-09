@@ -55,7 +55,10 @@ if [[ "$#" -gt 0 ]]; then
 fi
 
 # Cleanup old builds
-rm -rf themes bin
+for key in "${!names[@]}"; do
+  rm -rf themes/"$key"
+  rm -f bin/"${key}.tar.xz"
+done
 
 # Building Bibata XCursor binaries
 for key in "${!names[@]}"; do
