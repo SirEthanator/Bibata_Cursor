@@ -100,30 +100,3 @@ cd ..
 cp LICENSE bitmaps/
 zip -rv bin/bitmaps.zip bitmaps
 
-# Install Linux Cursors
-read -p "Install Linux cursors? (Y/n) " install
-install=$(echo "$install" | tr '[:upper:]' '[:lower:]')
-
-if [[ "$install" == 'y' || -z "$install" ]]; then
-  read -p "Backup existing cursors? This will overwrite any existing backups. (y/N) " backup
-  backup=$(echo "$backup" | tr '[:upper:]' '[:lower:]')
-  echo "Installing..."
-  cd themes || exit 1
-
-  if [[ "$backup" == 'y' ]]; then
-    rm -rf "$HOME"/.icons/bak
-    mkdir "$HOME"/.icons/bak
-  fi
-
-  for key in "${!names[@]}"; do
-    if [[ -e "$HOME"/.icons/"$key" ]]; then
-      if [[ "$backup" == 'y' ]]; then
-        mv "$HOME"/.icons/"$key" "$HOME"/.icons/bak || exit 1
-      else
-        rm -rf "$HOME"/.icons/"$key"
-      fi
-    fi
-    cp -r "$key" "$HOME"/.icons
-  done
-  echo 'Done!'
-fi
