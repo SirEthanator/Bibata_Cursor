@@ -3,6 +3,7 @@ themes/
 bin/
 bitmaps/
 render.json
+schemes/*Material*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

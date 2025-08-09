@@ -41,6 +41,19 @@ names["Bibata-Modern-Rose-Pine-Dawn"]=$(with_version "Rose Pine Dawn and rounded
 names["Bibata-Modern-Material"]=$(with_version "Material Dark and rounded edge Bibata")
 names["Bibata-Modern-Material-Light"]=$(with_version "Material Light and rounded edge Bibata")
 
+if [[ "$#" -gt 0 ]]; then
+  declare -A tmp
+  for key in "$@"; do [[ -v names[$key] ]] && tmp[$key]="${names[$key]}"; done
+
+  unset names
+  declare -A names
+  for key in "${!tmp[@]}"; do
+    names[$key]="${tmp[$key]}"
+  done
+
+  unset tmp
+fi
+
 # Cleanup old builds
 rm -rf themes bin
 
