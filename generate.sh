@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if ! which cbmp; then
+  echo 'Error: cbmp not found'
+  echo 'Please install it from https://github.com/SirEthanator/cbmp-rs'
+  exit 1
+fi
+
 ROOT="$( cd -- "$(dirname "$0")" || exit 1 > /dev/null 2>&1 ; pwd -P )"
 
 if [[ -n "$1" ]]; then
@@ -10,8 +16,8 @@ else
 fi
 
 (
+  # Render jsons and build.sh use relative paths, so cd is needed.
   cd "$ROOT" || exit 1
-  npx cbmp "$json"
+  cbmp "$json"
   ./build.sh "$@"
 )
-

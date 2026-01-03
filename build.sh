@@ -1,5 +1,7 @@
 #!/bin/bash
-# A script for preparing binaries of Bibata Cursors, created by Abdulkaiz Khatri.
+# A script for preparing binaries of Bibata Cursors, created by Abdulkaiz Khatri, Modified by SirEthanator.
+
+# TODO: Skip windows generation flag
 
 version="v2.0.6"
 
