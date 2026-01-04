@@ -64,6 +64,7 @@ skip_hyprcursors=false
 skip_xcursors=false
 
 skip_bitmaps=false
+skip_archives=false
 
 while [[ "$#" -gt 0 ]]; do
   case "$1" in
@@ -78,6 +79,9 @@ while [[ "$#" -gt 0 ]]; do
     ;;
   --skip-bitmaps)
     skip_bitmaps=true
+    ;;
+  --skip-archives)
+    skip_archives=true
     ;;
   *)
     if is_valid_name "$1"; then
@@ -121,14 +125,20 @@ for key in "${names[@]}"; do
   if [[ $skip_xcursors == false ]]; then
     echo "Cleaning old XCursors and hyprcursors (${key})..."
     rm -rf themes/"$key"
-    rm -f bin/"${key}.tar.xz"
+
+    if [[ $skip_archives == false ]]; then
+      rm -f bin/"${key}.tar.xz"
+    fi
     echo "Done"
   fi
 
   if [[ $skip_windows == false ]]; then
     echo "Cleaning old Windows cursors (${key})..."
     rm -rf themes/"${key}-Windows"
-    rm -f bin/"${key}-Windows.tar.xz"
+
+    if [[ $skip_archives == false ]]; then
+      rm -f bin/"${key}-Windows.tar.xz"
+    fi
     echo "Done"
   fi
 done
@@ -174,14 +184,16 @@ for key in "${names[@]}"; do
     echo "Done"
   fi
 
-  [[ $skip_hyprcursors == false ]] && hyprcursor_str=" and hyprcursors" || hyprcursor_str=""
-  echo "Adding XCursors${hyprcursor_str} to archive (${key})..."
-  tar -cJf "../bin/${key}.tar.xz" "${key}" >/dev/null 2>&1
-  echo "Done"
+  if [[ $skip_archives == false ]]; then
+    [[ $skip_hyprcursors == false ]] && hyprcursor_str=" and hyprcursors" || hyprcursor_str=""
+    echo "Adding XCursors${hyprcursor_str} to archive (${key})..."
+    tar -cJf "../bin/${key}.tar.xz" "${key}" >/dev/null 2>&1
+    echo "Done"
+  fi
 done
 
 # Compressing Bibata-*-Windows
-if [[ $skip_windows == false ]]; then
+if [[ $skip_windows == false && $skip_archives == false ]]; then
   for key in "${names[@]}"; do
     echo "Zipping Windows cursors (${key})..."
     zip -rv "../bin/${key}-Windows.zip" "${key}-Small-Windows" "${key}-Regular-Windows" "${key}-Large-Windows" "${key}-Extra-Large-Windows" >/dev/null 2>&1
@@ -191,7 +203,7 @@ fi
 
 cd ..
 
-if [[ $skip_bitmaps == false ]]; then
+if [[ $skip_bitmaps == false && $skip_archives == false ]]; then
   # Copying License File for 'bitmaps'
   cp LICENSE bitmaps/
 
