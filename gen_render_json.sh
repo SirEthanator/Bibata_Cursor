@@ -1,6 +1,9 @@
 #!/bin/bash
 
-ROOT="$( cd -- "$(dirname "$0")" || exit 1 > /dev/null 2>&1 ; pwd -P )"
+ROOT="$(
+  cd -- "$(dirname "$0")" || exit 1 >/dev/null 2>&1
+  pwd -P
+)"
 
 declare -a files
 
@@ -23,4 +26,4 @@ if [[ "${#files}" -lt 1 ]]; then
   exit 1
 fi
 
-jq -s 'reduce .[] as $item ({}; . * $item)' "${files[@]}" > render.json
+jq -s 'reduce .[] as $item ({}; . * $item)' "${files[@]}" >render.json

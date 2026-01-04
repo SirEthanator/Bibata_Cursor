@@ -3,6 +3,11 @@
 
 version="v2.0.6"
 
+ROOT="$(
+  cd -- "$(dirname "$0")" || exit 1 >/dev/null 2>&1
+  pwd -P
+)"
+
 error() {
   printf "\033[0;31mERROR: \033[0m%s\n" "$1"
   if [[ "$#" -gt 1 ]]; then
@@ -28,7 +33,7 @@ get_config_path() {
     cfg_path="${cfg_path}/normal"
   fi
 
-  echo $cfg_path
+  echo "${ROOT}/${cfg_path}"
 }
 
 with_version() {
@@ -109,14 +114,17 @@ if [[ $skip_bitmaps = false ]] && ! which cbmp >/dev/null 2>&1; then
 fi
 
 if [[ $skip_hyprcursors == false ]] && [[ $skip_xcursors == true ]]; then
-  error 'Hyprcursor generation requires xcursors to be generated first.' 'To skip XCursors, also skip hyprcursors.'
+  error 'Hyprcursor generation requires xcursors to be generated first.' 'To skip XCursors, also skip hyprcursors (run with --skip-hyprcursors).'
 fi
 
 # Generate bitmaps
 if [[ $skip_bitmaps == false ]]; then
-  echo 'Generating bitmaps...'
-  ./gen_render_json.sh "${names[@]}"
-  cbmp --quiet ./render.json
+  (
+    cd "$ROOT" || error "Failed to cd into ${ROOT}"
+    echo 'Generating bitmaps...'
+    ./gen_render_json.sh "${names[@]}"
+    cbmp --quiet ./render.json
+  )
 fi
 
 # Cleanup old builds
@@ -124,20 +132,20 @@ for key in "${names[@]}"; do
   # If XCursors are skipped, so are hyprcursors
   if [[ $skip_xcursors == false ]]; then
     echo "Cleaning old XCursors and hyprcursors (${key})..."
-    rm -rf themes/"$key"
+    rm -rf "${ROOT}/themes/${key}"
 
     if [[ $skip_archives == false ]]; then
-      rm -f bin/"${key}.tar.xz"
+      rm -f "${ROOT}/bin/${key}.tar.xz"
     fi
     echo "Done"
   fi
 
   if [[ $skip_windows == false ]]; then
     echo "Cleaning old Windows cursors (${key})..."
-    rm -rf themes/"${key}-Windows"
+    rm -rf "${ROOT}/themes/${key}-Windows"
 
     if [[ $skip_archives == false ]]; then
-      rm -f bin/"${key}-Windows.tar.xz"
+      rm -f "${ROOT}/bin/${key}-Windows.tar.xz"
     fi
     echo "Done"
   fi
@@ -149,7 +157,7 @@ if [[ $skip_xcursors == false ]]; then
     comment="${allNames[$key]}"
     cfg_path=$(get_config_path "$key")
 
-    ctgen "$cfg_path/x.build.toml" -p x11 -d "bitmaps/${key}" -n "$key" -c "$comment XCursors"
+    ctgen "$cfg_path/x.build.toml" -p x11 -d "${ROOT}/bitmaps/${key}" -n "$key" -c "$comment XCursors"
   done
 fi
 
@@ -159,27 +167,32 @@ if [[ $skip_windows == false ]]; then
     comment="${allNames[$key]}"
     cfg_path=$(get_config_path "$key")
 
-    ctgen "$cfg_path/win_rg.build.toml" -d "bitmaps/$key" -n "$key-Regular" -c "$comment Windows Cursors"
-    ctgen "$cfg_path/win_lg.build.toml" -d "bitmaps/$key" -n "$key-Large" -c "$comment Windows Cursors"
-    ctgen "$cfg_path/win_xl.build.toml" -d "bitmaps/$key" -n "$key-Extra-Large" -c "$comment Windows Cursors"
+    ctgen "$cfg_path/win_rg.build.toml" -d "${ROOT}/bitmaps/$key" -n "$key-Regular" -c "$comment Windows Cursors"
+    ctgen "$cfg_path/win_lg.build.toml" -d "${ROOT}/bitmaps/$key" -n "$key-Large" -c "$comment Windows Cursors"
+    ctgen "$cfg_path/win_xl.build.toml" -d "${ROOT}/bitmaps/$key" -n "$key-Extra-Large" -c "$comment Windows Cursors"
   done
 fi
 
 # Generate Hyprcursors and compress binaries
-mkdir -p bin
-cd themes || exit 1
+if [[ ! -d "${ROOT}/bin" ]]; then
+  mkdir "${ROOT}/bin"
+fi
+
+generate_hyprcursors() {
+  tmpdir=$(mktemp -d '/tmp/bibata_hyprcursor_XXXXXX')
+  hyprcursor-util -x "${ROOT}/themes/${key}" -o "$tmpdir" || return 1
+  hyprcursor-util -c "$tmpdir"/extracted* -o "$tmpdir" || return 1
+  mv "$tmpdir"/theme*/* "${ROOT}/themes/${key}" || return 1
+  rm -rf "$tmpdir"
+}
 
 for key in "${names[@]}"; do
   if [[ $skip_hyprcursors == false ]]; then
     echo "Generating hyprcursors (${key})..."
 
-    {
-      tmpdir=$(mktemp -d '/tmp/bibata_hyprcursor_XXXXXX')
-      hyprcursor-util -x "$key" -o "$tmpdir"
-      hyprcursor-util -c "$tmpdir"/extracted* -o "$tmpdir"
-      mv "$tmpdir"/theme_Extracted Theme/* "$key"
-      rm -rf "$tmpdir"
-    } >/dev/null 2>&1 || warn "Hyprcursor generation failed"
+    if ! generate_hyprcursors > /dev/null 2>&1; then
+      warn "Hyprcursor generation failed"
+    fi
 
     echo "Done"
   fi
@@ -187,7 +200,7 @@ for key in "${names[@]}"; do
   if [[ $skip_archives == false ]]; then
     [[ $skip_hyprcursors == false ]] && hyprcursor_str=" and hyprcursors" || hyprcursor_str=""
     echo "Adding XCursors${hyprcursor_str} to archive (${key})..."
-    tar -cJf "../bin/${key}.tar.xz" "${key}" >/dev/null 2>&1
+    tar -cJf "${ROOT}/bin/${key}.tar.xz" "${ROOT}/themes/${key}" >/dev/null 2>&1
     echo "Done"
   fi
 done
@@ -196,7 +209,7 @@ done
 if [[ $skip_windows == false && $skip_archives == false ]]; then
   for key in "${names[@]}"; do
     echo "Zipping Windows cursors (${key})..."
-    zip -rv "../bin/${key}-Windows.zip" "${key}-Small-Windows" "${key}-Regular-Windows" "${key}-Large-Windows" "${key}-Extra-Large-Windows" >/dev/null 2>&1
+    zip -rv "${ROOT}/bin/${key}-Windows.zip" "${ROOT}/themes/${key}-"{Small-Windows,Regular-Windows,Large-Windows,Extra-Large-Windows} >/dev/null 2>&1
     echo "Done"
   done
 fi
@@ -205,9 +218,9 @@ cd ..
 
 if [[ $skip_bitmaps == false && $skip_archives == false ]]; then
   # Copying License File for 'bitmaps'
-  cp LICENSE bitmaps/
+  cp "${ROOT}/LICENSE" "${ROOT}/bitmaps/"
 
   echo "Zipping bitmaps..."
-  zip -rv bin/bitmaps.zip bitmaps >/dev/null 2>&1
+  zip -rv "${ROOT}/bin/bitmaps.zip" "${ROOT}/bitmaps" >/dev/null 2>&1
   echo "Done"
 fi
